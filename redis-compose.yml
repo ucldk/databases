@@ -1,0 +1,29 @@
+services:
+  db:
+    image: redis:7-alpine
+    restart: unless-stopped
+    container_name: redis-db
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 6379:6379
+    #volumes:
+    #  - ./data/redis-data:/data
+    environment:
+      - REDIS_PASSWORD=yourStrong(!)Password
+      - REDIS_PORT=6379
+
+  insight:
+    image: redis/redisinsight
+    restart: unless-stopped
+    container_name: redis-insight
+    depends_on:
+      - db
+    ports:
+      - 8085:5540
+    environment:
+      - RI_REDIS_HOST=db
+      - RI_REDIS_PORT=6379

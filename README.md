@@ -134,6 +134,8 @@ docker compose -f postgres-compose.yml down
 * Type: In-memory data structure store
 * Host: `localhost`
 * Port: `6379`
-* Username: `root`
-* Password: `root`
+* Username: [not applicable, this Redis instance does not use authentication by default]
+* Password: [not applicable, this Redis instance does not use authentication by default]
 * Default database: [no default database, Redis uses a single database by default]
+
+There is not provided any volume for redis, since it by default is an in-memory database. If you want to persist data, you can add a volume to the `redis-compose.yml` file (it is commented out by default).
