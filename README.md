@@ -105,7 +105,7 @@ docker compose -f mssql-compose.yml down
 * Password: `root`
 * Default database: `playground`
 
-#### Database Management
+#### Management
 
 * [http://localhost:8083 (adminer)](http://localhost:8083) (simple local web interface)
     * Credentials:
@@ -139,3 +139,22 @@ docker compose -f postgres-compose.yml down
 * Default database: [no default database, Redis uses a single database by default]
 
 There is not provided any volume for redis, since it by default is an in-memory database. If you want to persist data, you can add a volume to the `redis-compose.yml` file (it is commented out by default).
+
+#### Management
+
+* [http://localhost:8085 (Redis Commander)](http://localhost:8085) (local web interface)
+
+#### Commands
+
+**Run Redis database**
+
+```bash
+docker compose -f redis-compose.yml up -d
+```
+
+**Stop Redis database**
+
+```bash
+docker compose -f redis-compose.yml down
+```
+
