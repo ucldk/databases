@@ -37,5 +37,5 @@ services:
     ports:
       - 8084:80
     environment:
-      - PGADMIN_DEFAULT_EMAIL: root@local.com
-      - PGADMIN_DEFAULT_PASSWORD: root
+      - PGADMIN_DEFAULT_EMAIL=root@local.com
+      - PGADMIN_DEFAULT_PASSWORD=root
