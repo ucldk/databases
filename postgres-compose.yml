@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    container_name: postgres-db
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=playground
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    container_name: postgres-adminer
+    depends_on:
+      - db
+    ports:
+      - 8083:8080
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    container_name: postgres-pgadmin
+    depends_on:
+      - db
+    ports:
+      - 8084:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL: root@local.com
+      - PGADMIN_DEFAULT_PASSWORD: root
