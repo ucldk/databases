@@ -36,6 +36,8 @@ services:
       - db
     ports:
       - 8084:80
+    volumes:
+      - ./data/pgadmin-data:/var/lib/pgadmin
     environment:
       - PGADMIN_DEFAULT_EMAIL=root@local.com
       - PGADMIN_DEFAULT_PASSWORD=root
