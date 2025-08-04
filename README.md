@@ -2,11 +2,11 @@
 
 In this project you will find docker runtimes for the following databases:
 
-* MariaDB
-* MongoDB
-* Microsoft SQL Server (MSSQL)
-* PostgreSQL
-* Redis
+* [MariaDB](#mariadb)
+* [MongoDB](#mongodb)
+* [Microsoft SQL Server (MSSQL)](#microsoft-sql-server-mssql)
+* [PostgreSQL](#postgresql)
+* [Redis](#redis)
 
 All databases are configured to run in Docker containers, making it easy to set up and test locally. The files are written as Docker Compose files (**not** Docker Swarm Compose files).
 
